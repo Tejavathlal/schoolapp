@@ -1,0 +1,41 @@
+
+.parent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	/* background-color: #f8630c; */
+	background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/2327ffa4-20e9-41b6-b77c-462d26f7bfea/d3ecbzg-045f95bb-8610-4dbb-84ab-e1d08fb037d7.jpg");
+	
+}
+button{
+	width: 100px;
+	height: 50px;
+
+}
+.btn1{
+	text-align: center;
+
+}
+.but{
+	/* background-color: hsl(192, 75%, 45%); */
+	height: 310px;
+	width: 400px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	background-image: url("src\assets\imageurl.webp");
+
+}
+h1{
+	color: white;
+}
+input{
+	width: 80%;
+	height: 20px;
+	margin-left: 38px;
+}
+label{
+	margin-left: 38px;
+   font-weight: bold;
+   font-size: 15px;
+}

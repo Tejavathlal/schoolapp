@@ -1,0 +1,17 @@
+
+input{
+    width: 400px;
+    font-size: 15px;
+    font-weight: 400;
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("src\assets\pngtree-blue.jpg");
+}
+
+label{
+    color: #f2c40a;
+    font-weight: 500;
+}

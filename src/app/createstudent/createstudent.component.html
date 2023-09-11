@@ -1,0 +1,133 @@
+
+
+
+<section>
+
+<form [formGroup]="StudentForm">
+    <div class="mb-3 mt-3">
+        <label  class="form-label">Name:</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">class:</label>
+        <input type="number" class="form-control" formControlName="class" placeholder="Enter Class">
+      </div>
+      
+      <div class="mb-3 mt-3">
+        <label  class="form-label">Father Name:</label>
+        <input type="text" class="form-control" formControlName="fatherName" placeholder="Enter Father Name">
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label  class="form-label" >Gender:</label>
+        <input type="radio" name="gender" value="Male" formControlName="gender"  style="width: 30px;">
+        <label>Male</label>
+        <input type="radio" name="gender" value="Female"  formControlName="gender" style="width: 30px;">
+        <label >Female</label>
+      </div>
+       
+      
+      <div class="mb-3 mt-3">
+        <label  class="form-label">Date of Birth:</label>
+        <input type="date" class="form-control" formControlName="dob" placeholder="Enter Date Of Birth">
+      </div>
+
+
+      <div class="mb-3 mt-3">
+        <label  class="form-label">Email:</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Enter Email">
+      </div>
+      <div class="mb-3 mt-3">
+        <label  class="form-label">Password:</label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
+      </div>
+
+      <div formGroupName="address">
+        <div class="mb-3 mt-3">
+          <label  class="form-label">Address Line:</label>
+          <input type="text" class="form-control" formControlName="addressLine" placeholder="Enter AddressLine">
+        </div>
+        <div class="mb-3 mt-3">
+          <label  class="form-label">City:</label>
+          <input type="text" class="form-control" formControlName="city" placeholder="Enter city">
+        </div>
+        <div class="mb-3 mt-3">
+          <label  class="form-label">State:</label>
+          <select formControlName="state" class="form-control">
+          <input type="text" class="form-control" formControlName="state" placeholder="Enter State">
+          <option value="TS">Telangana</option>
+          <option value="Dl">Delhi</option>
+          </select>
+          <div class="text-danger" *ngIf="StudentForm.get('address')?.get('state')?.touched && StudentForm.get('address')?.get('state')?.invalid">
+            <p *ngIf="StudentForm.get('address')?.get('state')?.errors?.['required']">State of Required</p>
+            </div>
+        </div>
+        <div class="mb-3 mt-3">
+          <label  class="form-label">Pin Code:</label>
+          <input type="number" class="form-control" formControlName="pincode" placeholder="Enter PinCode">
+        </div>
+      </div>
+       
+      <div class="mb-3 mt-3">
+        <label  class="form-label">Type:</label>
+        <input type="radio" name="type"  value="DayScholar" formControlName="type"  style="width: 40px;">
+        <label  class="form-label">DayScholar</label>
+        <input type="radio" name="type"  value="Residential" formControlName="type"  style="width: 40px;">
+        <label  class="form-label">Residential</label>
+        
+        <div class="mb-3 mt-3" *ngIf="StudentForm.get('type')?.value=='DayScholar'">
+          <label  class="form-label">Bus Fee:</label>
+          <input type="number" class="form-control" formControlName="busfee" placeholder="Enter State">
+        </div>
+
+        <div class="mb-3 mt-3" *ngIf="StudentForm.get('type')?.value=='Residential'">
+          <label  class="form-label">Hostel Fee:</label>
+          <input type="number" class="form-control" formControlName="hostelfee" placeholder="Enter State">
+        </div>
+      </div>
+        
+
+      <div class="mb-3">
+        <label for="comment">Conducts:</label>
+        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+      </div>
+
+
+
+
+      <button (click)="studentadd()" class="btn btn-warning">Add Student</button>
+      <div formArrayName="studentCards">
+        <div *ngFor="let student of studentFormArray.controls; let i=index">
+          <div formGroupName="{{i}}">
+            <div class="mb-3 mt-3">
+              <label  class="form-label">Year:</label>
+              <input type="number" class="form-control" formControlName="year" placeholder="Enter Year">
+            </div>
+
+            <!-- <div class="mb-3 mt-3">
+              <label  class="form-label">Percentage:</label>
+              <input type="text" class="form-control" formControlName="percentage" placeholder="Enter Percentage">
+            </div>
+  -->
+            <label class="form-label">Percentage:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="percentage" placeholder="Enter Percentage">
+              <span class="input-group-text">%</span>
+            </div>
+            
+
+
+
+            <div class="mb-3 mt-3">
+              <label  class="form-label">Marks:</label>
+              <input type="number" class="form-control" formControlName="marks" placeholder="Enter Marks">
+            </div>
+          </div>
+          <div class="text-center">
+            <button (click)="deletestudent(i)" class="btn btn-success">Delete</button>
+          </div>
+        </div>
+      </div>
+      <button (click)="submit()" class="btn btn-primary m-2">Submit</button>
+</form>
+</section>

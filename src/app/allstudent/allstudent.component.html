@@ -1,0 +1,62 @@
+<div class="text-center parent">
+    <input type="text" placeholder="Search Student Name" [(ngModel)]="term" (keypress)="getstudentfilter()">
+    <div>
+        <label class="label1">Column:</label>
+        <select [(ngModel)]="column" class="btn1">
+            <option>createdAt</option>
+            <option>name</option>
+        </select>
+        <label class="label2">order:</label>
+        <select [(ngModel)]="order" class="btn2">
+            <option>ASC</option>
+            <option >DESC</option>
+        </select>
+        <button class="btn btn-warning hei" (click)="getstudentSortby()">Sort</button>
+    </div>
+    <div>
+        <label class="label3">Limit:</label>
+        <select [(ngModel)]="limit" class="btn3">
+            <option>3</option>
+            <option>5</option>
+            <option >10</option>
+            <option>15</option>
+        </select>
+        <label class="label4">Page:</label>
+        <select [(ngModel)]="page" class="btn4">
+            <option>1</option>
+            <option >2</option>
+            <option>3</option>
+            <option >4</option>
+        </select>
+        <button class="btn btn-danger" (click)="getstudentpage()">Proceed</button>
+    </div>
+    </div>
+    <br><br>
+    <table class="table table-hover table-bordered table-dark">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Created At</th>
+                <th>Name</th>
+                <th>Avatar</th>
+                <th>ID</th>
+                <th>Percentage</th>
+                <th>Email</th>
+                <th>Class</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of students; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{s.createdAt}}</td>
+                <td>{{s.name}}</td>
+                <td><img src="{{s.avatar}}" alt=""></td>
+                <td>{{s.id}}</td>
+                <td [ngStyle]="{'color': s.marks>35 ? 'green' : 'red'}">{{s.percentage}}</td>
+                <td>{{s.email}}</td>
+                <td>{{s.class}}</td>
+                <td><button (click)="getstudentdelete(s.id)" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
